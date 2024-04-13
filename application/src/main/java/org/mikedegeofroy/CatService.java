@@ -1,2 +1,5 @@
-package org.mikedegeofroy;public class CatService {
+package org.mikedegeofroy;
+
+
+public class CatService implements org.mikedegeofroy.contracts.CatService {
 }

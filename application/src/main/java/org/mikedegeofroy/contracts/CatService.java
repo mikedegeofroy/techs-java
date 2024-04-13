@@ -1,2 +1,4 @@
-package org.mikedegeofroy.contracts;public interface CatService {
+package org.mikedegeofroy.contracts;
+
+public interface CatService {
 }
