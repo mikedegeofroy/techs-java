@@ -8,7 +8,6 @@ import org.mikedegeofroy.dtos.CatDto;
 import org.mikedegeofroy.errors.NotFoundException;
 import org.mikedegeofroy.mappers.CatMapper;
 import org.mikedegeofroy.models.Cat;
-import org.mikedegeofroy.models.Owner;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -55,18 +54,6 @@ public class CatServiceImpl implements org.mikedegeofroy.contracts.CatService {
                 .stream()
                 .map(CatMapper::mapToDto)
                 .collect(Collectors.toList());
-    }
-
-    @Override
-    public List<CatDto> getCatsByOwnerId(Integer id) throws NotFoundException {
-        Optional<Owner> owner = ownerRepository.findById(id);
-
-        if (owner.isEmpty()) throw new NotFoundException("Owner with id not found");
-
-        return owner
-                .map(value -> value.getCats().stream().map(CatMapper::mapToDto)
-                        .collect(Collectors.toList()))
-                .orElse(null);
     }
 
     @Override

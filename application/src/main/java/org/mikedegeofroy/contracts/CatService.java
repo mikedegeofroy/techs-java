@@ -17,6 +17,4 @@ public interface CatService {
     void removeFriendship(Integer from, Integer to) throws NotFoundException;
 
     List<CatDto> getFriendsById(Integer id) throws NotFoundException;
-
-    List<CatDto> getCatsByOwnerId(Integer id) throws NotFoundException;
 }

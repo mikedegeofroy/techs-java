@@ -27,6 +27,18 @@ public class OwnerServiceImpl implements org.mikedegeofroy.contracts.OwnerServic
     }
 
     @Override
+    public List<CatDto> getCatsByOwnerId(Integer id) throws NotFoundException {
+        Optional<Owner> owner = ownerRepository.findById(id);
+
+        if (owner.isEmpty()) throw new NotFoundException("Owner with id not found");
+
+        return owner
+                .map(value -> value.getCats().stream().map(CatMapper::mapToDto)
+                        .collect(Collectors.toList()))
+                .orElse(null);
+    }
+
+    @Override
     public void postOwner(OwnerDto owner_dto) {
         ownerRepository.save(OwnerMapper.mapToEntity(owner_dto));
     }

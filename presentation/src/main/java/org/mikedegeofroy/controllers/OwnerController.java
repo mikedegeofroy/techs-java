@@ -26,9 +26,21 @@ public class OwnerController {
     }
 
     @DeleteMapping("/owners/{id}")
-    public ResponseEntity<?> postOwner(@PathVariable Integer id) {
+    public ResponseEntity<?> deleteOwner(@PathVariable Integer id) {
         ownerService.deleteOwnerById(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @DeleteMapping("/owners/{id}/cats")
+    public ResponseEntity<List<CatDto>> getCatsByOwnerId(@PathVariable Integer id) {
+        List<CatDto> cats;
+        try {
+            cats = ownerService.getCatsByOwnerId(id);
+        } catch (NotFoundException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<>(cats, HttpStatus.OK);
     }
 
     @PostMapping("/owners/{id}/cats")
@@ -43,7 +55,7 @@ public class OwnerController {
     }
 
     @PostMapping("/owners/{id}/cats/assign/{cat_id}")
-    public ResponseEntity<?> postOwner(@PathVariable Integer id, @PathVariable Integer cat_id) {
+    public ResponseEntity<?> assignCatToOwner(@PathVariable Integer id, @PathVariable Integer cat_id) {
         try {
             ownerService.assignCatToOwner(id, cat_id);
         } catch (NotFoundException e) {

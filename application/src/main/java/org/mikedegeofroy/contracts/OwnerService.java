@@ -8,6 +8,8 @@ import java.util.List;
 
 public interface OwnerService {
 
+    List<CatDto> getCatsByOwnerId(Integer id) throws NotFoundException;
+
     void postOwner(OwnerDto owner_dto);
 
     List<OwnerDto> getOwners();
