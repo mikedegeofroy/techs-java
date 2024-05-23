@@ -2,6 +2,7 @@ package org.mikedegeofroy.controllers;
 
 import org.mikedegeofroy.contracts.CatService;
 import org.mikedegeofroy.dtos.CatDto;
+import org.mikedegeofroy.errors.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,26 +31,42 @@ public class CatController {
     }
 
     @DeleteMapping("/cats/{id}")
-    public ResponseEntity removeCat(@PathVariable Integer id) {
+    public ResponseEntity<?> removeCat(@PathVariable Integer id) {
         catService.removeCatById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping("/cats/{id}/friends")
     public ResponseEntity<List<CatDto>> getFriends(@PathVariable Integer id) {
-        var friends = catService.getFriendsById(id);
+        List<CatDto> friends;
+
+        try {
+            friends = catService.getFriendsById(id);
+        } catch (NotFoundException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
         return new ResponseEntity<>(friends, HttpStatus.OK);
     }
 
     @PostMapping("/cats/friendship")
-    public ResponseEntity addFriendship(@RequestParam Integer from, @RequestParam Integer to) {
-        catService.addFriendship(from, to);
-        return new ResponseEntity(HttpStatus.OK);
+    public ResponseEntity<?> addFriendship(@RequestParam Integer from, @RequestParam Integer to) {
+        try {
+            catService.addFriendship(from, to);
+        } catch (NotFoundException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @DeleteMapping("/cats/friendship")
-    public ResponseEntity removeFriendship(@RequestParam Integer from, @RequestParam Integer to) {
-        catService.removeFriendship(from, to);
-        return new ResponseEntity(HttpStatus.OK);
+    public ResponseEntity<?> removeFriendship(@RequestParam Integer from, @RequestParam Integer to) {
+        try {
+            catService.removeFriendship(from, to);
+        } catch (NotFoundException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

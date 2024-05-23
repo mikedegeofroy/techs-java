@@ -1,6 +1,7 @@
 package org.mikedegeofroy.contracts;
 
 import org.mikedegeofroy.dtos.CatDto;
+import org.mikedegeofroy.errors.NotFoundException;
 
 import java.util.List;
 
@@ -11,11 +12,11 @@ public interface CatService {
 
     void addCat(CatDto cat);
 
-    void addFriendship(Integer from, Integer to);
+    void addFriendship(Integer from, Integer to) throws NotFoundException;
 
-    void removeFriendship(Integer from, Integer to);
+    void removeFriendship(Integer from, Integer to) throws NotFoundException;
 
-    List<CatDto> getFriendsById(Integer id);
+    List<CatDto> getFriendsById(Integer id) throws NotFoundException;
 
-    List<CatDto> getCatsByOwnerId(Integer id);
+    List<CatDto> getCatsByOwnerId(Integer id) throws NotFoundException;
 }
