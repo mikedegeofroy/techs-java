@@ -11,12 +11,8 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/application" />
             <option value="$PROJECT_DIR$/infrastructure" />
+            <option value="$PROJECT_DIR$/main" />
             <option value="$PROJECT_DIR$/presentation" />
-            <option value="$PROJECT_DIR$/presentation/presentation" />
-            <option value="$PROJECT_DIR$/presentation/src" />
-            <option value="$PROJECT_DIR$/presentation/src/main" />
-            <option value="$PROJECT_DIR$/presentation/src/main/java" />
-            <option value="$PROJECT_DIR$/presentation/src/main/java/presentation" />
           </set>
         </option>
       </GradleProjectSettings>

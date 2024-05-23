@@ -1,6 +1,7 @@
 plugins {
     id("java")
     id("org.springframework.boot") version "3.2.4"
+    id("io.freefair.lombok") version "8.6"
 }
 
 apply(plugin = "io.spring.dependency-management")
@@ -14,14 +15,26 @@ repositories {
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
+
     testImplementation(platform("org.junit:junit-bom:5.9.1"))
     testImplementation("org.junit.jupiter:junit-jupiter")
 
-    implementation(project("application"))
-    implementation(project("presentation"))
-    implementation(project("infrastructure"))
+    implementation(project(":application"))
+    implementation(project(":presentation"))
+    implementation(project(":infrastructure"))
 }
 
 tasks.test {
     useJUnitPlatform()
 }
+
+subprojects {
+    apply(plugin = "org.springframework.boot")
+    apply(plugin = "io.spring.dependency-management")
+    apply(plugin = "io.freefair.lombok")
+
+    repositories {
+        mavenCentral() // This applies Maven Central to all subprojects
+    }
+}
+
