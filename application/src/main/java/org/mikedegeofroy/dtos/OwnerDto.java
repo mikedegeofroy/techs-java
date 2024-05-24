@@ -9,8 +9,7 @@ import java.util.List;
 public class OwnerDto {
     private Integer id;
     private String name;
-    private Date birthdate;
     private String surname;
-    private String email;
+    private Date birthdate;
     private List<CatDto> cats;
 }

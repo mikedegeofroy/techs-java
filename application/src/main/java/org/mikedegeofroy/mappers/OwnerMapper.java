@@ -16,7 +16,6 @@ public class OwnerMapper {
         ownerDto.setId(owner.getId());
         ownerDto.setName(owner.getName());
         ownerDto.setSurname(owner.getSurname());
-        ownerDto.setEmail(owner.getEmail());
         ownerDto.setBirthdate(owner.getBithdate());
 
         ownerDto.setCats(owner.getCats().stream()
@@ -33,7 +32,6 @@ public class OwnerMapper {
         owner.setId(ownerDto.getId());
         owner.setName(ownerDto.getName());
         owner.setSurname(ownerDto.getSurname());
-        owner.setEmail(ownerDto.getEmail());
         owner.setBithdate(owner.getBithdate());
 
         owner.setCats(ownerDto.getCats().stream()

@@ -1,15 +1,13 @@
 package org.mikedegeofroy.models;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 import java.util.Date;
 import java.util.List;
 
 @Entity
-@Getter
-@Setter
+@Data
 public class Owner {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,14 +15,13 @@ public class Owner {
 
 
     private String name;
-    private String email;
     private String surname;
     private Date bithdate;
 
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(
             name = "cat_owners",
-            joinColumns = @JoinColumn(name = "onwer_id"),
+            joinColumns = @JoinColumn(name = "owner_id"),
             inverseJoinColumns = @JoinColumn(name = "cat_id")
     )
     private List<Cat> cats;
