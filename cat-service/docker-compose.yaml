@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  cat-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: cat-service:latest
+    container_name: cat-service
+    ports:
+      - "8080:8080"
+    environment:
+      - JAVA_OPTS=-Xmx512m
+    entrypoint: [ "java", "-jar", "/app/src-1.0-SNAPSHOT.jar" ]
+    networks:
+      - postgres-network
+  postgres:
+    image: registry.gitlab.com/dalibo/postgresql_anonymizer
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: mydatabase
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - postgres-network
+networks:
+  postgres-network:
+    driver: bridge
+
+volumes:
+  postgres-data:
