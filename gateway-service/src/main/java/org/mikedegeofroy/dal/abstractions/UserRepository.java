@@ -1,6 +1,6 @@
 package org.mikedegeofroy.dal.abstractions;
 
-import org.mikedegeofroy.models.User;
+import org.mikedegeofroy.dal.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

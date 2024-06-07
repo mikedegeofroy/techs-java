@@ -1,5 +1,16 @@
 version: '3.7'
 services:
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: 'rabbitmq'
+    ports:
+      - 5672:5672
+      - 15672:15672
+    volumes:
+      - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
+      - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
+    networks:
+      - microservice-network
   postgres:
     image: registry.gitlab.com/dalibo/postgresql_anonymizer
     environment:
@@ -11,23 +22,11 @@ services:
     ports:
       - "5432:5432"
     networks:
-      - postgres-network
-  rabbitmq:
-    image: rabbitmq:3.10.7-management
-    hostname: rabbitmq
-    restart: always
-    environment:
-      - RABBITMQ_DEFAULT_USER=rmuser
-      - RABBITMQ_DEFAULT_PASS=rmpassword
-      - RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS=-rabbit log_levels [{connection,error},{default,error}] disk_free_limit 2147483648
-    volumes:
-      - ./rabbitmq:/var/lib/rabbitmq
-    ports:
-      - 15672:15672
-      - 5672:5672
+      - microservice-network
 networks:
-  postgres-network:
+  microservice-network:
     driver: bridge
+
 
 volumes:
   postgres-data:
