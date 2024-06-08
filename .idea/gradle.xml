@@ -9,13 +9,11 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/application" />
             <option value="$PROJECT_DIR$/cat-service" />
             <option value="$PROJECT_DIR$/gateway-service" />
-            <option value="$PROJECT_DIR$/infrastructure" />
-            <option value="$PROJECT_DIR$/main" />
             <option value="$PROJECT_DIR$/owner-service" />
-            <option value="$PROJECT_DIR$/presentation" />
+            <option value="$PROJECT_DIR$/shared" />
+            <option value="$PROJECT_DIR$/user-service" />
           </set>
         </option>
       </GradleProjectSettings>

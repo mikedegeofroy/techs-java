@@ -4,7 +4,7 @@ package org.mikedegeofroy.application.services;
 import lombok.Getter;
 import org.mikedegeofroy.application.contracts.CatService;
 import org.mikedegeofroy.dal.abstractions.CatRepository;
-import org.mikedegeofroy.application.dtos.CatDto;
+import org.mikedegeofroy.dtos.CatDto;
 import org.mikedegeofroy.errors.NotFoundException;
 import org.mikedegeofroy.mappers.CatMapper;
 import org.mikedegeofroy.dal.entities.Cat;

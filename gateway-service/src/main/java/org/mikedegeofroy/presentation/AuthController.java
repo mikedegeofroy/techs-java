@@ -1,8 +1,7 @@
 package org.mikedegeofroy.presentation;
 
 import org.mikedegeofroy.application.contracts.AuthService;
-import org.mikedegeofroy.application.dtos.AuthDto;
-import org.mikedegeofroy.errors.NotFoundException;
+import org.mikedegeofroy.dtos.AuthDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,11 +27,7 @@ public class AuthController {
 
     @PostMapping("/verify")
     public ResponseEntity<AuthDto> verify(@RequestParam String code) {
-        try {
-            var res = authService.verify(code);
-            return new ResponseEntity<>(res, HttpStatus.OK);
-        } catch (NotFoundException e) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+        var res = authService.verify(code);
+        return new ResponseEntity<>(res, HttpStatus.OK);
     }
 }

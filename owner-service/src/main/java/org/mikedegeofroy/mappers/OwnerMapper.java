@@ -1,6 +1,6 @@
 package org.mikedegeofroy.mappers;
 
-import org.mikedegeofroy.application.dtos.OwnerDto;
+import org.mikedegeofroy.dtos.OwnerDto;
 import org.mikedegeofroy.dal.entities.Owner;
 
 public class OwnerMapper {

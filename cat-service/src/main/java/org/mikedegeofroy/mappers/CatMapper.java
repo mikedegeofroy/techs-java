@@ -1,7 +1,7 @@
 package org.mikedegeofroy.mappers;
 
-import org.mikedegeofroy.application.dtos.CatDto;
 import org.mikedegeofroy.dal.entities.Cat;
+import org.mikedegeofroy.dtos.CatDto;
 
 import java.util.Collections;
 import java.util.List;

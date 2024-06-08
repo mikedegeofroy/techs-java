@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.Data;
+import org.mikedegeofroy.dtos.Breed;
+import org.mikedegeofroy.dtos.Color;
 
 import java.util.Date;
 import java.util.List;

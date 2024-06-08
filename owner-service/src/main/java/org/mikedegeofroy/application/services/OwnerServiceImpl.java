@@ -1,15 +1,11 @@
 package org.mikedegeofroy.application.services;
 
-import org.mikedegeofroy.abstractions.CatRepository;
 import org.mikedegeofroy.application.contracts.OwnerService;
 import org.mikedegeofroy.dal.abstractions.OwnerRepository;
-import org.mikedegeofroy.dtos.CatDto;
-import org.mikedegeofroy.application.dtos.OwnerDto;
-import org.mikedegeofroy.errors.NotFoundException;
-import org.mikedegeofroy.mappers.CatMapper;
-import org.mikedegeofroy.mappers.OwnerMapper;
-import org.mikedegeofroy.models.Cat;
 import org.mikedegeofroy.dal.entities.Owner;
+import org.mikedegeofroy.dtos.OwnerDto;
+import org.mikedegeofroy.errors.NotFoundException;
+import org.mikedegeofroy.mappers.OwnerMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

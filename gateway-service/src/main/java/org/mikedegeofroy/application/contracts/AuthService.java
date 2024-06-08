@@ -1,11 +1,11 @@
 package org.mikedegeofroy.application.contracts;
 
-import org.mikedegeofroy.application.dtos.AuthDto;
-import org.mikedegeofroy.errors.NotFoundException;
+import org.mikedegeofroy.dtos.AuthDto;
 
 public interface AuthService {
     void login(String email);
-    AuthDto verify(String code) throws NotFoundException;
 
-    AuthDto refresh(String refresh) throws NotFoundException;
+    AuthDto verify(String code);
+
+    AuthDto refresh(String refresh);
 }
